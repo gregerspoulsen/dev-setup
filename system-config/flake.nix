@@ -1,18 +1,21 @@
+# /etc/nixos/flake.nix
 {
-  description = "A flake for building on top of an existing NixOS configuration";
-
-  inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
-  inputs.nixos-config = {
-    url = "path:/etc/nixos/configuration.nix"; # Adjust this path to your Vagrant box's existing configuration.nix
+  inputs = {
+    # NOTE: Replace "nixos-23.11" with that which is in system.stateVersion of
+    # configuration.nix. You can also use latter versions if you wish to
+    # upgrade.
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.05";
   };
-
-  outputs = { self, nixpkgs, nixos-config }: {
-    nixosConfigurations.my-machine = nixpkgs.lib.nixosSystem {
-      system = "x86_64-linux"; # Modify as per your system architecture
-      modules = [
-        nixos-config.nixosConfigurations.my-machine # Reference the upstream configuration
-        ./system-config.nix # Additional configurations you want to add on top
+  outputs = inputs@{ self, nixpkgs, ... }: {
+    # NOTE: 'nixos' is the default hostname set by the installer
+    nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
+      # NOTE: Change this to aarch64-linux if you are on ARM
+      system = "x86_64-linux";
+      modules = [ 
+        /etc/nixos/configuration.nix
+        ./system-config.nix
       ];
+    
     };
   };
 }

@@ -18,9 +18,6 @@
     };
   };
 
-  # Enable Flakes:
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
-
   # Enable Desktop Environment
   services.xserver.enable = true;
   services.xserver.displayManager.gdm.enable = true;
