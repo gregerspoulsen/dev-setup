@@ -1,6 +1,7 @@
 { config, lib, pkgs, ... }:
 
 {
+
   programs.alacritty = {
     enable = true;
     settings = {
@@ -18,4 +19,7 @@
   home.packages = with pkgs; [
     powerline-fonts
     ];
+  home.sessionVariables = {
+    TERMINAL = "alacritty";
+  };
 }

@@ -5,6 +5,8 @@
 
   environment.pathsToLink = [ "/libexec" ]; # links /libexec from derivations to /run/current-system/sw 
 
+  services.xserver.xkb.layout = "dk";
+  
   services.xserver = {
     enable = true;
 

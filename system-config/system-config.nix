@@ -12,6 +12,7 @@
       initialPassword = "test";
       isNormalUser = true;
       shell = pkgs.zsh;
+      extraGroups = [ "wheel"]; # Apparently this give sudo :D
     };
   };
 
