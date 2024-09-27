@@ -1,0 +1,2 @@
+Great Repo with i3:
+https://github.dev/srid/nix-config
