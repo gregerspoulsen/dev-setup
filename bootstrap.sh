@@ -3,8 +3,15 @@ set -e
 # Resize Root Partition:
 sudo resize2fs /dev/sda1
 
+# Install home-manager:
+sudo nix-channel --add https://github.com/nix-community/home-manager/archive/release-24.05.tar.gz home-manager
+sudo nix-channel --update
+
+
 # Switch config to flake:
 sudo nixos-rebuild switch --flake /vagrant/system-config --impure 
+
+
 
 
 # home-manager init

@@ -14,7 +14,8 @@
       modules = [ 
         /etc/nixos/configuration.nix
         ./system-config.nix
-        ./i3.nix
+        #./i3.nix
+        ./gnome.nix
       ];
     };
   };
