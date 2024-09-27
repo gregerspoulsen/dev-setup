@@ -15,6 +15,7 @@
       just
       slack
       home-manager
+      google-chrome
     ];
 
     # This needs to actually be set to your username

@@ -15,7 +15,7 @@
     };
   };
 
-  home-manager.users.vagrant = (import ../user/home.nix);
+  home-manager.users.gp = (import ../user/home.nix);
 
   environment.systemPackages = with pkgs; [
       git
