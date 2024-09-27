@@ -17,19 +17,11 @@
       pkgs = import nixpkgs { inherit system; };
     in {
       homeConfigurations = {
-        vagrant = home-manager.lib.homeManagerConfiguration {
+        gp = home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
           modules = [ ./home.nix ];
         };
       };
       nixpkgs.config.allowUnfree = true;
-
-      services.xserver = {
-        enable = true;
-        windowManager.i3.enable = true;
-        };
-        services.displayManager = {
-          defaultSession = "none+i3";
-        };
     };
 }

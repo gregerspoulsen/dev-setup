@@ -1,2 +1,10 @@
 Great Repo with i3:
 https://github.dev/srid/nix-config
+
+
+Home Manager Starting Guide:
+https://github.com/evertras/simple-homemanager
+
+
+# Home Manager Options:
+https://mynixos.com/home-manager/options/

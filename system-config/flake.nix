@@ -15,7 +15,7 @@
         /etc/nixos/configuration.nix
         ./system-config.nix
         #./i3.nix
-        ./gnome.nix
+        ./kde.nix
       ];
     };
   };
