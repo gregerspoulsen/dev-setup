@@ -1,4 +1,5 @@
 { lib, pkgs, ... }:
+
 {
 
   imports = [
@@ -23,16 +24,15 @@
     homeDirectory = "/home/gp";
 
     file = {
-      "hello.txt" = {
-        text = ''
-          #!/usr/bin/env bash
-
-          echo "Hello, world!"
-          echo '*slaps roof* This script can fit so many lines in it'
-        '';
-        executable = true;
+      ".background-image" = {
+        source = builtins.fetchurl {
+          url = "https://raw.githubusercontent.com/NixOS/nixos-artwork/master/wallpapers/nix-wallpaper-simple-blue.png";
+          sha256 = "1llr175m454aqixxwbp3kb5qml2hi1kn7ia6lm7829ny6y7xrnms";
+        };
       };
     };
+
+
 
     keyboard.layout = "dk";
 

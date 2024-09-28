@@ -30,7 +30,7 @@ Vagrant.configure("2") do |config|
 
   # Setup Bridged Network
   # Target name can be found with: VBoxManage.exe list bridgedifs
-  config.vm.network "public_network", bridge: "Intel(R) Ethernet Connection (7) I219-V"
+  #config.vm.network "public_network", bridge: "Intel(R) Ethernet Connection (7) I219-V"
   # config.vm.network "public_network", bridge: "Realtek USB 2.5GbE Family Controller"
 
   config.vm.provider :virtualbox do |v|
