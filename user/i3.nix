@@ -5,7 +5,17 @@ let
 in {
   xsession.windowManager.i3 = {
     enable = true;
+
+    package = pkgs.i3-gaps;
     config = {
+      gaps = {
+        inner = 6;
+        outer = 3;
+      };
+
+
+      window.border = 0;
+      
       modifier = mod;
 
       fonts = ["DejaVu Sans Mono, FontAwesome 6"];
