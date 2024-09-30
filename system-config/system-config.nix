@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 
 {
-  imports = [ <home-manager/nixos> ];
+  imports = [ ./i3.nix ];
   # TODO: Configure your system-wide user settings (groups, etc), add more users as needed.
 
   programs.zsh.enable = true;
@@ -17,17 +17,13 @@
     };
   };
 
-  home-manager.users.gp = (import ../user/home.nix);
-
   environment.systemPackages = with pkgs; [
       git
+      home-manager
       ];
 
   # Enable Flakes:
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
-
-  # Grow partition on boot:
-  boot.growPartition = true;
 
   # Set locale:
   console.keyMap = "dk";

@@ -9,7 +9,8 @@ sudo nix-channel --update
 
 
 # Switch config to flake:
-sudo nixos-rebuild switch --flake /vagrant/system-config --impure 
+cd /vagrant
+./apply.sh
 
 
 

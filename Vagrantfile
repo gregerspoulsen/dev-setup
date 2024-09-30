@@ -53,8 +53,8 @@ Vagrant.configure("2") do |config|
   config.vm.disk :disk, size: "300GB", primary: true
 
   # Add the htop package
-  config.vm.provision :nixos, path: "configuration.nix"#, run: 'always'
-  config.vm.provision :reload  
+  #config.vm.provision :nixos, path: "configuration.nix"#, run: 'always'
+  #config.vm.provision :reload  
   # Run Bootstrap:
   config.vm.provision "shell",
     path: "bootstrap.sh"
@@ -69,7 +69,7 @@ Vagrant.configure("2") do |config|
   # config.persistent_storage.mountpoint = '/home/gp/dev'
   # config.persistent_storage.diskdevice = '/dev/sdd'
 
-  config.vm.synced_folder "./", "/home/vagrant/vagrant-nix"
+  config.vm.synced_folder "./", "/dev-setup/"
 
   # config.vm.provision :reload
 end
