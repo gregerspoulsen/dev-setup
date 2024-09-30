@@ -5,6 +5,7 @@
   # TODO: Configure your system-wide user settings (groups, etc), add more users as needed.
 
   programs.zsh.enable = true;
+  virtualisation.docker.enable = true;
 
   users.users = {
     # FIXME: Replace with your username
@@ -12,7 +13,7 @@
       initialPassword = "test";
       isNormalUser = true;
       shell = pkgs.zsh;
-      extraGroups = [ "wheel"]; # Apparently this give sudo :D
+      extraGroups = [ "wheel" "docker"]; # Apparently this give sudo :D
     };
   };
 
