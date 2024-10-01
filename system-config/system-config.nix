@@ -6,6 +6,7 @@
 
   programs.zsh.enable = true;
   virtualisation.docker.enable = true;
+  virtualisation.virtualbox.guest.enable = true;
 
   users.users = {
     # FIXME: Replace with your username
@@ -31,5 +32,5 @@
     defaultLocale = "en_DK.UTF-8";
   };
 
-  system.stateVersion = "24.05";
+  system.stateVersion = "24.11";
 }

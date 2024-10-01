@@ -8,7 +8,7 @@
 
     shellAliases = {
         ll = "ls -l";
-        nix-update = "sudo nixos-rebuild switch --flake /vagrant/system-config --impure";
+        nix-update = "sudo nixos-rebuild switch --flake /vagrant/apply.sh";
         home-update = "home-manager switch --flake /vagrant/user#gp";
     };
     # history = {
