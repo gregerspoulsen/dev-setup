@@ -9,8 +9,7 @@ sudo nix-channel --update
 
 
 # Switch config to flake:
-cd /vagrant
-./apply.sh
+./install.sh
 
 
 

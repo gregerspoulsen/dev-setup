@@ -1,26 +1,19 @@
-#! /usr/bin/env nix-shell
-#!nix-shell -p git
+#! /usr/bin/env bash
 
 set -eu
 
-# # --- Make sure Git is available -----------------------------------------------
-# if [ -f /etc/NIXOS ]; then
-#     echo "Running on NixOS - try to install git"
-#     # Make sure git is installed
-#     nix-shell -p git
-# fi
-
-# if ! command -v git >/dev/null 2>&1; then
-#     echo "Git is not installed. Please install Git and try again."
-#     exit 1
-# fi
-
-
-# --- Clone Repository ---------------------------------------------------------
-sudo mkdir -p /dev-setup
-sudo chown $USER /dev-setup
-git clone https://github.com/gregerspoulsen/dev-setup.git /dev-setup
-cd /dev-setup
+# --- Make sure Git is available -----------------------------------------------
+if [ -f /etc/NIXOS ]; then
+    echo "Running on NixOS - using nix shell..."
+    # Make sure git is installed
+    nix-shell -p git --run ./scripts/clone-repo.sh
+elif ! command -v git >/dev/null 2>&1; then
+    echo "Git is not installed. Please install Git and try again."
+    exit 1
+else
+    ./scripts/clone-repo.sh
+fi
 
 # Apply Flake:
+cd /dev-setup
 ./apply.sh

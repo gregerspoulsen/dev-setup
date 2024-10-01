@@ -5,4 +5,4 @@ TARGET=${1:-vbox}
 
 set -eu
 
-sudo nixos-rebuild switch --flake /vagrant/targets/$TARGET/#nixos
+sudo nixos-rebuild switch --flake /dev-setup/targets/$TARGET/#nixos

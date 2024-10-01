@@ -57,7 +57,7 @@ Vagrant.configure("2") do |config|
   #config.vm.provision :reload  
   # Run Bootstrap:
   config.vm.provision "shell",
-    path: "bootstrap.sh"
+    path: "install.sh"
   config.vm.provision :reload
 
 
@@ -69,7 +69,7 @@ Vagrant.configure("2") do |config|
   # config.persistent_storage.mountpoint = '/home/gp/dev'
   # config.persistent_storage.diskdevice = '/dev/sdd'
 
-  config.vm.synced_folder "./", "/dev-setup/"
+  #config.vm.synced_folder "./", "/dev-setup/"
 
   # config.vm.provision :reload
 end
