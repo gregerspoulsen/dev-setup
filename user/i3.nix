@@ -38,6 +38,12 @@ in {
         "${mod}+Shift+l" = "move up";
         "${mod}+Shift+semicolon" = "move right";
 
+        # Resize
+        "${mod}+Left" = "resize shrink width 10 px or 10 ppt";
+        "${mod}+Down" = "resize grow height 10 px or 10 ppt";
+        "${mod}+Up" = "resize shrink height 10 px or 10 ppt";
+        "${mod}+Right" = "resize grow width 10 px or 10 ppt";
+
         # My multi monitor setup
         "${mod}+m" = "move workspace to output DP-2";
         "${mod}+Shift+m" = "move workspace to output DP-5";
