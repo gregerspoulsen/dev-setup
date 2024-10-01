@@ -8,8 +8,7 @@
 
     shellAliases = {
         ll = "ls -l";
-        nix-update = "sudo nixos-rebuild switch --flake /dev-setup/apply.sh";
-        home-update = "home-manager switch --flake /dev-setup/user#gp";
+        nix-up = "/dev-setup/apply.sh";
     };
     # history = {
     #     size = 10000;

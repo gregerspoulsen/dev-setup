@@ -8,6 +8,8 @@
     ./i3.nix
     ./zsh.nix
     ./alacritty.nix
+    ./ssh.nix
+    ./espanso.nix
   ];
 
   
@@ -19,6 +21,7 @@
       slack
       home-manager
       google-chrome
+      python3
     ];
 
     # This needs to actually be set to your username
