@@ -49,15 +49,19 @@ Vagrant.configure("2") do |config|
 
   end
 
-  # Increase Disk Size from 40GB to 200GB
-  config.vm.disk :disk, size: "300GB", primary: true
+  config.vm.synced_folder ".", "/dev-setup", type: "rsync",
+    rsync__auto: true
 
-  # Add the htop package
-  #config.vm.provision :nixos, path: "configuration.nix"#, run: 'always'
-  #config.vm.provision :reload  
-  # Run Bootstrap:
+
+  # Resize root file system:
+  config.vm.disk :disk, size: "300GB", primary: true
+  config.vm.provision :nixos, path: "configuration.nix" # grow partition
+  config.vm.provision :reload  
+  config.vm.provision "shell", inline: "sudo resize2fs /dev/sda1"
+
+  # Setup System:
   config.vm.provision "shell",
-    path: "install.sh"
+    path: "apply.sh"
   config.vm.provision :reload
 
 
