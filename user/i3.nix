@@ -18,7 +18,7 @@ in {
       
       modifier = mod;
 
-      fonts = ["DejaVu Sans Mono, FontAwesome 6"];
+      fonts = { names = ["DejaVu Sans Mono" "FontAwesome 6"];};
 
       keybindings = lib.mkOptionDefault {
         "${mod}+p" = "exec ${pkgs.dmenu}/bin/dmenu_run";
