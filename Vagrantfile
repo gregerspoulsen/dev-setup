@@ -44,7 +44,7 @@ Vagrant.configure("2") do |config|
     v.customize ["modifyvm", :id, "--usb", "on"] # Enable USB
     v.customize ["modifyvm", :id, "--usbxhci", "on"] # Enable USB3
     v.customize ['modifyvm', :id, '--graphicscontroller', 'vmsvga']
-    v.customize ['modifyvm', :id, '--accelerate3d', 'off'] # Enable 3D Acceleration
+    v.customize ['modifyvm', :id, '--accelerate3d', 'on'] # Enable 3D Acceleration
 
 
   end

@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 
 {
-  imports = [ ./i3.nix ];
+  imports = [ ./sway.nix ];
   # TODO: Configure your system-wide user settings (groups, etc), add more users as needed.
 
   programs.zsh.enable = true;
