@@ -10,6 +10,7 @@
     ./alacritty.nix
     ./ssh.nix
     ./espanso.nix
+    ./waybar.nix
   ];
 
   
