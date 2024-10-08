@@ -22,6 +22,7 @@
       home-manager
       google-chrome
       python3
+      usbutils  
     ];
 
     # This needs to actually be set to your username

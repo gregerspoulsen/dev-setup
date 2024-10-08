@@ -6,6 +6,7 @@
 
   programs.zsh.enable = true;
   virtualisation.docker.enable = true;
+  programs.thunar.enable = true;
   virtualisation.virtualbox.guest.enable = true;
 
   users.users = {

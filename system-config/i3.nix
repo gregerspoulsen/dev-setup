@@ -6,17 +6,13 @@
   environment.pathsToLink = [ "/libexec" ]; # links /libexec from derivations to /run/current-system/sw 
 
   services.xserver.xkb.layout = "dk";
-  
+  services.displayManager.defaultSession = "none+i3";
   services.xserver = {
     enable = true;
 
     desktopManager = {
       xterm.enable = false;
       wallpaper.mode = "fill";
-    };
-   
-    displayManager = {
-        defaultSession = "none+i3";
     };
 
     windowManager.i3 = {
