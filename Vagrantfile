@@ -26,25 +26,25 @@ Vagrant.configure("2") do |config|
   }
 
   # VM Configuration
-  config.vm.box = "nixbox/nixos" # Ubuntu 20.04 64-bit
+  config.vm.box = "gpnix" # Ubuntu 20.04 64-bit
 
   # Setup Bridged Network
   # Target name can be found with: VBoxManage.exe list bridgedifs
   #config.vm.network "public_network", bridge: "Intel(R) Ethernet Connection (7) I219-V"
   # config.vm.network "public_network", bridge: "Realtek USB 2.5GbE Family Controller"
 
-  config.vm.provider :virtualbox do |v|
+  config.vm.provider :vmware_desktop do |v|
     v.gui = true # Display UI 
     v.memory = 4000
     v.cpus = 2
-    v.customize ["modifyvm", :id, "--vram", "128"] # 128 MB Video Memory
-    v.customize ['modifyvm', :id, '--clipboard', 'bidirectional']
-    v.customize ['modifyvm', :id, '--draganddrop', 'bidirectional']
-    v.customize ['modifyvm', :id, '--nested-hw-virt', 'on']
-    v.customize ["modifyvm", :id, "--usb", "on"] # Enable USB
-    v.customize ["modifyvm", :id, "--usbxhci", "on"] # Enable USB3
-    v.customize ['modifyvm', :id, '--graphicscontroller', 'vmsvga']
-    v.customize ['modifyvm', :id, '--accelerate3d', 'off'] # Enable 3D Acceleration
+    # v.customize ["modifyvm", :id, "--vram", "128"] # 128 MB Video Memory
+    # v.customize ['modifyvm', :id, '--clipboard', 'bidirectional']
+    # v.customize ['modifyvm', :id, '--draganddrop', 'bidirectional']
+    # v.customize ['modifyvm', :id, '--nested-hw-virt', 'on']
+    # v.customize ["modifyvm", :id, "--usb", "on"] # Enable USB
+    # v.customize ["modifyvm", :id, "--usbxhci", "on"] # Enable USB3
+    # v.customize ['modifyvm', :id, '--graphicscontroller', 'vmsvga']
+    # v.customize ['modifyvm', :id, '--accelerate3d', 'off'] # Enable 3D Acceleration
 
 
   end
@@ -54,15 +54,15 @@ Vagrant.configure("2") do |config|
     rsync__auto: true
   
   # Resize root file system:
-  config.vm.disk :disk, size: "300GB", primary: true
-  config.vm.provision :nixos, path: "configuration.nix" # grow partition
-  config.vm.provision :reload  
-  config.vm.provision "shell", inline: "sudo resize2fs /dev/sda1"
+  # config.vm.disk :disk, size: "300GB", primary: true
+  # config.vm.provision :nixos, path: "configuration.nix" # grow partition
+  # config.vm.provision :reload  
+  # config.vm.provision "shell", inline: "sudo resize2fs /dev/sda1"
 
   # Setup System:
-  config.vm.provision "shell",
-    path: "apply.sh"
-  config.vm.provision :reload
+  # config.vm.provision "shell",
+  #   path: "apply.sh"
+  # config.vm.provision :reload
 
 
   # config.persistent_storage.enabled = false
