@@ -27,4 +27,11 @@
     };
   };
 
+  # Enable unlock of SSH keys with keyring
+  services.gnome.gnome-keyring.enable = true;
+  services.xserver.windowManager.i3.extraSessionCommands = ''
+  eval $(gnome-keyring-daemon --start --components=pkcs11,secrets,ssh);
+  export SSH_AUTH_SOCK;
+  '';
+
 }
