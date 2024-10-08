@@ -9,6 +9,8 @@
   programs.thunar.enable = true;
   virtualisation.virtualbox.guest.enable = true;
 
+  services.gvfs.enable = true; # Add support for MTP (Android File Transfer)
+
   users.users = {
     # FIXME: Replace with your username
     gp = {

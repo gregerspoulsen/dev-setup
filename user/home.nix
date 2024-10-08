@@ -1,4 +1,4 @@
-{ lib, pkgs, ... }:
+{ lib, pkgs, services, ... }:
 
 {
 
@@ -11,8 +11,6 @@
     ./ssh.nix
     ./espanso.nix
   ];
-
-  
 
   home = {
     packages = with pkgs; [
