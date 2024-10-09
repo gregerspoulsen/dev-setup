@@ -16,6 +16,7 @@
       ms-vscode-remote.remote-ssh
       streetsidesoftware.code-spell-checker
       mhutchie.git-graph
+      bbenoist.nix
   ];
 };
 }
