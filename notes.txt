@@ -1,5 +1,5 @@
 Great Repo with i3:
-https://github.dev/srid/nix-config
+https://github.com/srid/nix-config
 
 
 Home Manager Starting Guide:
@@ -11,4 +11,4 @@ https://mynixos.com/home-manager/options/
 
 
 i3 2:
-https://github.dev/tars0x9752/home/tree/main
+https://github.com/tars0x9752/home/tree/main
