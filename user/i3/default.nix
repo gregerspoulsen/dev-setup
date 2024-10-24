@@ -44,9 +44,9 @@ in {
         "${mod}+Up" = "resize shrink height 10 px or 10 ppt";
         "${mod}+Right" = "resize grow width 10 px or 10 ppt";
 
-        # My multi monitor setup
-        "${mod}+m" = "move workspace to output DP-2";
-        "${mod}+Shift+m" = "move workspace to output DP-5";
+        # Move workspaces between monitors
+        "${mod}+m" = "move workspace to output right";
+        "${mod}+Shift+m" = "move workspace to output left";
       };
 
       # bars = [
@@ -64,7 +64,7 @@ in {
 
 # # mod+p to move workspace to other screen:
 # bindsym $mod+p move workspace to output right
-# bindsym $mod+Shift+p move workspace tAo output left
+# bindsym $mod+Shift+p move workspace to output left
 
 # # Interactive screenshot by pressing printscreen
 # bindsym Print exec gnome-screenshot -i -c
