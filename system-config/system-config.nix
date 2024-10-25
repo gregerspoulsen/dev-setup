@@ -10,6 +10,7 @@
   virtualisation.virtualbox.guest.enable = true;
 
   services.gvfs.enable = true; # Add support for MTP (Android File Transfer)
+  services.automatic-timezoned.enable = true; # Enable automatic time-zone setting
 
   users.users = {
     # FIXME: Replace with your username
