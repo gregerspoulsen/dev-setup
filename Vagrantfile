@@ -50,8 +50,7 @@ Vagrant.configure("2") do |config|
   end
 
   # Sync Setup Folder
-  config.vm.synced_folder ".", "/dev-setup", type: "rsync",
-    rsync__auto: true
+  config.vm.synced_folder ".", "/dev-setup"
   
   # Resize root file system:
   config.vm.disk :disk, size: "300GB", primary: true
