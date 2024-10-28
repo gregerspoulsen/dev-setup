@@ -18,7 +18,7 @@
       initialPassword = "test";
       isNormalUser = true;
       shell = pkgs.zsh;
-      extraGroups = [ "wheel" "docker"]; # Apparently this give sudo :D
+      extraGroups = [ "wheel" "docker" "vagrant"]; # Apparently this give sudo :D
     };
   };
 
