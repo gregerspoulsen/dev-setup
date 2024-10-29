@@ -11,6 +11,7 @@
     ./ssh.nix
     ./espanso.nix
     ./scripts
+    ./thunderbird.nix
   ];
 
   home = {
