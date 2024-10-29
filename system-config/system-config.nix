@@ -1,7 +1,8 @@
 { config, pkgs, ... }:
 
 {
-  imports = [ ./i3 ];
+  imports = [ ./i3
+              ./audio.nix ];
   # TODO: Configure your system-wide user settings (groups, etc), add more users as needed.
 
   programs.zsh.enable = true;

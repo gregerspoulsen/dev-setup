@@ -5,7 +5,7 @@
   imports = [
     ./git.nix
     ./vscode.nix
-    ./i3
+    ./i3-2.nix
     ./zsh.nix
     ./alacritty.nix
     ./ssh.nix
