@@ -1,6 +1,7 @@
 { config, lib, pkgs, ... }:
 
 let
+  mod = "Mod4";
   colors = rec {
     # general
     background = "#312f2f";
@@ -81,19 +82,34 @@ in
 
         defaultWorkspace = "workspace number 1";
 
-        keybindings =
-          let
-            main-display-g = "Virtual-1";
+      keybindings = lib.mkOptionDefault {
+        "${mod}+Shift+x" = "exec sh -c '${pkgs.i3lock}/bin/i3lock -c 222222 & sleep 5 && xset dpms force of'";
+        "${mod}+Return" = "exec alacritty";
 
-            modifier = config.xsession.windowManager.i3.config.modifier;
-          in
-          lib.mkOptionDefault {
-            "${modifier}+c" = ''exec --no-startup-id "rofi -show calc -modi calc -no-show-match -no-sort > /dev/null"'';
-            "${modifier}+x" = ''exec --no-startup-id "rofi -show power-menu -modi power-menu:rofi-power-menu"'';
-            "${modifier}+z" = ''exec --no-startup-id "rofi -modi emoji -show emoji"'';
-            "${modifier}+p" = ''exec --no-startup-id "maim -g ${main-display-g} $HOME/screenshots/$(date --iso-8601='seconds').png"'';
-          };
+        # Focus
+        "${mod}+Mod1+Left" = "focus left";
+        "${mod}+Mod1+Down" = "focus down";
+        "${mod}+Mod1+Up" = "focus up";
+        "${mod}+Mod1+Right" = "focus right";
 
+        # Move
+        "${mod}+Shift+j" = "move left";
+        "${mod}+Shift+k" = "move down";
+        "${mod}+Shift+l" = "move up";
+        "${mod}+Shift+semicolon" = "move right";
+
+        # Resize
+        "${mod}+Left" = "resize shrink width 5 px or 5 ppt";
+        "${mod}+Down" = "resize grow height 5 px or 5 ppt";
+        "${mod}+Up" = "resize shrink height 5 px or 5 ppt";
+        "${mod}+Right" = "resize grow width 5 px or 5 ppt";
+
+        # Move workspaces between monitors
+        "${mod}+m" = "move workspace to output right";
+        "${mod}+Shift+m" = "move workspace to output left";
+        # Power Menu
+        "${mod}+x" = ''exec --no-startup-id "rofi -show power-menu -modi power-menu:rofi-power-menu"'';
+      };
         colors = {
           focused = {
             text = colors.primary; # タイトルのテキスト
@@ -293,11 +309,11 @@ in
           enable-ipc = true;
         };
 
-        "bar/side" = {
-          "inherit" = "bar/main";
+        # "bar/side" = {
+        #   "inherit" = "bar/main";
 
-          monitor = "Virtual-1";
-        };
+        #   monitor = "Virtual-1";
+        # };
 
         "module/oslogo" = {
           type = "custom/text";
@@ -314,7 +330,7 @@ in
           icon-0 = "10;10";
           icon-1 = "1;1";
           icon-2 = "2;2";
-          icon-3 = "3:3";
+          icon-3 = "3;3";
           icon-4 = "4;4";
           icon-5 = "5;5";
           icon-6 = "6;6";
@@ -348,7 +364,7 @@ in
           type = "internal/xwindow";
           label = "%title:0:40:...%";
           format = "<label>";
-          format-prefix = "N";
+          format-prefix = "";
           format-prefix-foreground = "${colors.primary}";
           label-empty = "NixOS";
         };
@@ -357,7 +373,7 @@ in
           type = "internal/fs";
           interval = 25;
           mount-0 = "/";
-          label-mounted = "%{F${colors.primary}}DISK:%{F-} %percentage_used:2%%";
+          label-mounted = "%{F${colors.primary}}DISK:%{F-} %free%";
           label-unmounted = "%mountpoint% not mounted";
           label-unmounted-foreground = "${colors.disabled}";
         };
@@ -368,7 +384,7 @@ in
 
           # 必要に応じて nickname および sink や source 名(node名)を変更すること
           # --color-muted は # なしの rrggbb のため # を取り除く
-          exec = ''${pulseaudio-control} --format '$VOL_ICON $VOL_LEVEL $NODE_NICKNAME' --color-muted "${builtins.replaceStrings ["#"] [""] colors.disabled}" --icons-volume " , " --icon-muted " " --node-nicknames-from "device.profile.name" --node-nickname "alsa_output.pci-0000_00_1f.3.analog-stereo:built-in" listen'';
+          exec = ''${pulseaudio-control} --format '$VOL_ICON $VOL_LEVEL $NODE_NICKNAME' --color-muted "${builtins.replaceStrings ["#"] [""] colors.disabled}" --icons-volume "🔊 ,🔊 " --icon-muted "🔇 " --node-nicknames-from "device.profile.name" --node-nickname "alsa_output.pci-0000_00_1f.3.analog-stereo:built-in" listen'';
           click-right = "exec ${pkgs.pavucontrol}/bin/pavucontrol &";
           click-left = "${pulseaudio-control} togmute";
           click-middle = "${pulseaudio-control} next-node";
@@ -382,7 +398,7 @@ in
           interval = 2;
           format-prefix = "RAM: ";
           format-prefix-foreground = "${colors.primary}";
-          label = "%percentage_used:2%%";
+          label = "%free%";
         };
 
         "module/cpu" = {
@@ -414,7 +430,7 @@ in
           date = "%Y-%m-%d %H:%M";
           label = "%date%";
           format = "<label>";
-          format-prefix = " ";
+          format-prefix = "";
           format-foreground = "${colors.foreground}";
           format-background = "${colors.background-alt}";
           format-padding = 2;
