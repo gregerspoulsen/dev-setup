@@ -147,9 +147,9 @@ in
   };
 
   # picom (necessary for transparent window)
-  services.picom = {
-    enable = true;
-  };
+  # services.picom = {
+  #   enable = true;
+  # };
 
   # rofi
   programs.rofi = {
