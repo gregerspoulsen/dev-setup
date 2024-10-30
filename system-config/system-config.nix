@@ -13,6 +13,14 @@
   services.gvfs.enable = true; # Add support for MTP (Android File Transfer)
   services.automatic-timezoned.enable = true; # Enable automatic time-zone setting
 
+
+  # Enable twingate (requires unfree predicate)
+  nixpkgs.config = {
+      allowUnfree = true;
+      allowUnfreePredicate = (_: true);
+    };
+  services.twingate.enable = true;
+
   users.users = {
     # FIXME: Replace with your username
     gp = {
