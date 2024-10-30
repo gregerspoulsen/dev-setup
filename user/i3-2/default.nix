@@ -64,7 +64,7 @@ in
 
         startup = [
           { command = "systemctl --user restart polybar"; always = true; notification = false; }
-          #{ command = "xset s off -dpms"; always = true; notification = false; }
+         #{ command = "xset s off -dpms"; always = true; notification = false; }
           #{ command = "xrandr --output eDP-1-1 --auto --left-of HDMI-0"; notification = false; }
         #   {
         #     command = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
@@ -140,7 +140,14 @@ in
 
         window.border = 1; # 新規作成した window にのみ有効
 
-        #workspaceOutputAssign = [{ output = "eDP-1-1"; workspace = "10"; }];
+        assigns = {
+          "10" = [{ class = "Google-chrome"; }];
+        };
+
+        workspaceOutputAssign = 
+          [{ output = "Virtual-3"; workspace = "10"; } 
+           { output = "Virtual-1"; workspace = "1"; }
+           ];
       };
 
       extraConfig = ''for_window [all] title_window_icon padding 10px'';
