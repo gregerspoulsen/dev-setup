@@ -470,7 +470,8 @@ in
 
     script = ''
       polybar --reload main &
-      polybar --reload side &
+      polybar --reload sidel &
+      polybar --reload sider &
     '';
   };
 }
