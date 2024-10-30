@@ -17,6 +17,7 @@
       streetsidesoftware.code-spell-checker
       mhutchie.git-graph
       bbenoist.nix
+      github.copilot
   ];
 };
 }
