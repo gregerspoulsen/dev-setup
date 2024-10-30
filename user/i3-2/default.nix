@@ -28,7 +28,8 @@ in
 {
   # wallpaper
   #xdg.configFile."${wallpaperOut}".source = ../wallpaper/hello.png;
-  imports = [ ./rofi-power-menu.nix ];
+  imports = [ ./rofi-power-menu.nix
+              ./fonts.nix ];
   
   xsession = {
     enable = true;
@@ -46,7 +47,7 @@ in
 
         fonts = {
           names = [ "JetBrainsMono Nerd Font" ];
-          size = 12.0;
+          size = 10.0;
         };
 
         gaps = {
@@ -280,7 +281,7 @@ in
         };
 
         "bar/main" = {
-          monitor = "Virtual-1";
+          monitor = "Virtual-2";
 
           width = "100%";
           height = 38;
@@ -309,15 +310,21 @@ in
           enable-ipc = true;
         };
 
-        # "bar/side" = {
-        #   "inherit" = "bar/main";
+        "bar/sidel" = {
+          "inherit" = "bar/main";
 
-        #   monitor = "Virtual-1";
-        # };
+          monitor = "Virtual-1";
+        };
+
+        "bar/sider" = {
+          "inherit" = "bar/main";
+
+          monitor = "Virtual-3";
+        };
 
         "module/oslogo" = {
           type = "custom/text";
-          content = "NixOS";
+          content = " NixOS";
           content-foreground = "${colors.foreground}";
           content-background = "${colors.background-alt}";
           content-padding = 2;
@@ -327,17 +334,17 @@ in
           type = "internal/xworkspaces";
           pin-workspaces = true;
           enable-scroll = false;
-          icon-0 = "10;10";
-          icon-1 = "1;1";
-          icon-2 = "2;2";
-          icon-3 = "3;3";
-          icon-4 = "4;4";
-          icon-5 = "5;5";
-          icon-6 = "6;6";
-          icon-7 = "7;7";
-          icon-8 = "8;8";
-          icon-9 = "9;9";
-          icon-default = "F";
+          icon-0 = "10;󰽽";
+          icon-1 = "1;󰎤";
+          icon-2 = "2;󰎧";
+          icon-3 = "3;󰎪";
+          icon-4 = "4;󰎭";
+          icon-5 = "5;󰎱";
+          icon-6 = "6;󰎳";
+          icon-7 = "7;󰎶";
+          icon-8 = "8;󰎹";
+          icon-9 = "9;󰎼";
+          icon-default = "󰎤";
 
           format = "<label-state>";
 
@@ -364,7 +371,7 @@ in
           type = "internal/xwindow";
           label = "%title:0:40:...%";
           format = "<label>";
-          format-prefix = "";
+          format-prefix = "  ";
           format-prefix-foreground = "${colors.primary}";
           label-empty = "NixOS";
         };
@@ -384,8 +391,7 @@ in
 
           # 必要に応じて nickname および sink や source 名(node名)を変更すること
           # --color-muted は # なしの rrggbb のため # を取り除く
-          exec = ''${pulseaudio-control} --format '$VOL_ICON $VOL_LEVEL $NODE_NICKNAME' --color-muted "${builtins.replaceStrings ["#"] [""] colors.disabled}" --icons-volume "🔊 ,🔊 " --icon-muted "🔇 " --node-nicknames-from "device.profile.name" --node-nickname "alsa_output.pci-0000_00_1f.3.analog-stereo:built-in" listen'';
-          click-right = "exec ${pkgs.pavucontrol}/bin/pavucontrol &";
+          exec = ''${pulseaudio-control} --format '$VOL_ICON $VOL_LEVEL $NODE_NICKNAME' --color-muted "${builtins.replaceStrings ["#"] [""] colors.disabled}" --icons-volume " , " --icon-muted " " --node-nicknames-from "device.profile.name" --node-nickname "alsa_output.pci-0000_00_1f.3.analog-stereo:built-in" listen'';          click-right = "exec ${pkgs.pavucontrol}/bin/pavucontrol &";
           click-left = "${pulseaudio-control} togmute";
           click-middle = "${pulseaudio-control} next-node";
           scroll-up = "${pulseaudio-control} --volume-max 130 up";
@@ -430,7 +436,7 @@ in
           date = "%Y-%m-%d %H:%M";
           label = "%date%";
           format = "<label>";
-          format-prefix = "";
+          format-prefix = " ";
           format-foreground = "${colors.foreground}";
           format-background = "${colors.background-alt}";
           format-padding = 2;
