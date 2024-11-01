@@ -108,8 +108,15 @@ in
         # Move workspaces between monitors
         "${mod}+m" = "move workspace to output right";
         "${mod}+Shift+m" = "move workspace to output left";
+        
         # Power Menu
         "${mod}+x" = ''exec --no-startup-id "rofi -show power-menu -modi power-menu:rofi-power-menu"'';
+
+        # Map mod+b to workspace 10 - used for browser
+        "${mod}+b" = "workspace 10";
+        # Map mod+ctrl+b to open a new browser instance
+        "${mod}+Shift+b" = ''exec --no-startup-id "i3-msg workspace 10; exec google-chrome-stable"'';
+
       };
         colors = {
           focused = {
@@ -140,9 +147,9 @@ in
 
         window.border = 1; # 新規作成した window にのみ有効
 
-        assigns = {
-          "10" = [{ class = "Google-chrome"; }];
-        };
+        # assigns = {
+        #   "10" = [{ class = "Google-chrome"; }];
+        # };
 
         workspaceOutputAssign = 
           [{ output = "Virtual-3"; workspace = "10"; } 
