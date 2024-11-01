@@ -46,12 +46,6 @@
       }
     ];
 
-    # Extra configurations for Zsh
-    initExtra = ''
-      # zsh-autocomplete
-      bindkey -M menuselect '^M' .accept-line # run code when selected completion
-        '';
-
   };
   #programs.starship.enable = true;
   programs.fzf.enable = true;
