@@ -34,6 +34,7 @@
   environment.systemPackages = with pkgs; [
       git
       home-manager
+      busybox # nslookup and more
       ];
 
   # Enable Flakes:
