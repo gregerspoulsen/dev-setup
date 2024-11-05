@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, services, ... }:
 
 let
   mod = "Mod4";
@@ -31,6 +31,10 @@ in
   imports = [ ./rofi-power-menu.nix
               ./fonts.nix ];
   
+
+  # Enable dunst notification manager:
+  services.dunst.enable = true;
+
   xsession = {
     enable = true;
 
@@ -78,7 +82,7 @@ in
         #   }
         ];
 
-        # polybar を使うので i3bar は不要
+        # disable i3bar to use polybar instead:
         bars = [ ];
 
         defaultWorkspace = "workspace number 1";
@@ -153,7 +157,9 @@ in
 
         workspaceOutputAssign = 
           [{ output = "Virtual-3"; workspace = "10"; } 
-           { output = "Virtual-1"; workspace = "1"; }
+           { output = "Virtual-2"; workspace = "1"; }
+           { output = "Virtual-3"; workspace = "9"; }
+           { output = "Virtual-1"; workspace = "8"; }
            ];
       };
 
@@ -282,6 +288,7 @@ in
       alsaSupport = true;
       pulseSupport = true;
       iwSupport = true;
+      i3Support = true;
     };
 
     config =
@@ -315,7 +322,7 @@ in
 
           font-0 = "JetBrainsMono Nerd Font:style=Regular:size=13;4";
 
-          modules-left = "oslogo xworkspaces xwindow";
+          modules-left = "oslogo i3 xwindow";
           modules-right = "filesystem memory cpu pulseaudio-control-output wlan battery date";
 
           cursor-click = "pointer";
@@ -344,41 +351,49 @@ in
           content-padding = 2;
         };
 
-        "module/xworkspaces" = {
-          type = "internal/xworkspaces";
-          pin-workspaces = true;
-          enable-scroll = false;
-          icon-0 = "10;󰽽";
-          icon-1 = "1;󰎤";
-          icon-2 = "2;󰎧";
-          icon-3 = "3;󰎪";
-          icon-4 = "4;󰎭";
-          icon-5 = "5;󰎱";
-          icon-6 = "6;󰎳";
-          icon-7 = "7;󰎶";
-          icon-8 = "8;󰎹";
-          icon-9 = "9;󰎼";
-          icon-default = "󰎤";
+        "module/i3" = {
+          type = "internal/i3";
 
-          format = "<label-state>";
+          pin-workspaces = true; # Only show on monitor with the workspace
+          show-urgent = true; # Show urgent even if on other monitor
+          enable-click = true; # Enable cliking on workspace
 
-          label-active = "%icon%";
-          label-active-foreground = "${colors.primary}";
-          label-active-background = "${colors.background-alt}";
-          label-active-underline = "${colors.primary}";
 
-          label-occupied = "%icon%";
+          # Set icons:
+          ws-icon-0 = "10;󰽽";
+          ws-icon-1 = "1;󰎤";
+          ws-icon-2 = "2;󰎧";
+          ws-icon-3 = "3;󰎪";
+          ws-icon-4 = "4;󰎭";
+          ws-icon-5 = "5;󰎱";
+          ws-icon-6 = "6;󰎳";
+          ws-icon-7 = "7;󰎶";
+          ws-icon-8 = "8;󰎹";
+          ws-icon-9 = "9;󰎼";
+          ws-icon-default = "󰎤";
 
+          # Customize active workspace appearance:
+          label-focused = "%icon%";
+          label-focused-foreground = "${colors.primary}";
+          label-focused-background = "${colors.background-alt}";
+          label-focused-underline = "${colors.primary}";
+
+          # Customize inactive empty appearance:
+          label-unfocused = "%icon%";
+
+          # Customize urgent workspace appearance:
           label-urgent = "%icon%";
           label-urgent-foreground = "${colors.alert}";
 
-          label-empty = "%icon%";
-          label-empty-foreground = "${colors.disabled}";
+          # Customize empty workspace appearance:
+          label-visible = "%icon%";
+          label-visible-foreground = "${colors.disabled}";
 
-          label-active-padding = 2;
-          label-occupied-padding = 2;
+          label-focused-padding = 2;
+          label-unfocused-padding = 2;
           label-urgent-padding = 2;
-          label-empty-padding = 2;
+          label-visible-padding = 2;
+
         };
 
         "module/xwindow" = {
@@ -394,7 +409,7 @@ in
           type = "internal/fs";
           interval = 25;
           mount-0 = "/";
-          label-mounted = "%{F${colors.primary}}DISK:%{F-} %free%";
+          label-mounted = "%{F${colors.primary}}/%{F-} %free%";
           label-unmounted = "%mountpoint% not mounted";
           label-unmounted-foreground = "${colors.disabled}";
         };
@@ -416,7 +431,7 @@ in
         "module/memory" = {
           type = "internal/memory";
           interval = 2;
-          format-prefix = "RAM: ";
+          format-prefix = "RAM ";
           format-prefix-foreground = "${colors.primary}";
           label = "%free%";
         };
@@ -424,7 +439,7 @@ in
         "module/cpu" = {
           type = "internal/cpu";
           interval = 2;
-          format-prefix = "CPU: ";
+          format-prefix = "CPU ";
           format-prefix-foreground = "${colors.primary}";
           label = "%percentage:2%%";
         };

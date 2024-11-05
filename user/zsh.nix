@@ -7,7 +7,8 @@
     autosuggestion.enable = true;
     shellAliases = {
         ll = "ls -l";
-        nix-up = "/dev-setup/apply.sh";
+        nixup = "/dev-setup/apply.sh";
+        list-audio = "pacmd list-sources | grep -e 'index:' -e device.string -e 'name:'";
     };
     # history = {
     #     size = 10000;
