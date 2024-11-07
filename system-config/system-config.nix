@@ -35,6 +35,8 @@
       git
       home-manager
       busybox # nslookup and more
+      gnome-screenshot
+      xclip # manage x clipboard from command line
       ];
 
   # Enable Flakes:

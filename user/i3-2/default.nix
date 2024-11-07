@@ -119,7 +119,13 @@ in
         # Map mod+b to workspace 10 - used for browser
         "${mod}+b" = "workspace 10";
         # Map mod+ctrl+b to open a new browser instance
-        "${mod}+Shift+b" = ''exec --no-startup-id "i3-msg workspace 10; exec google-chrome-stable"'';
+        "${mod}+Ctrl+b" = ''exec --no-startup-id "i3-msg workspace 10; exec google-chrome-stable"'';
+
+        # Interactive screenshot by pressing printscreen
+        "Print" = "exec gnome-screenshot -i -c";
+
+        # Crop-area screenshot by pressing Mod + printscreen
+        "${mod}+Print" = "exec gnome-screenshot -a -f /tmp/screenshot.png && xclip -in -selection clipboard -target image/png /tmp/screenshot.png";
 
       };
         colors = {
