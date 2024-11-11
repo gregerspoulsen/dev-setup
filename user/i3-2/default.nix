@@ -32,8 +32,29 @@ in
               ./fonts.nix ];
   
 
+  home.file = {
+      "bin/dunst-urgent-notification.sh" = {
+        text = ''
+        #!/bin/sh
+        wmctrl -r $1 -b add,demands_attention
+        '';
+        executable = true;
+      };
+    };
+
   # Enable dunst notification manager:
-  services.dunst.enable = true;
+  services.dunst = {
+    enable = true;
+    settings = {
+      slack = {
+        appname = "Slack";
+        summary = "*";
+        script = "~/bin/dunst-urgent-notification.sh";
+      };
+      
+    };
+  };
+
 
   xsession = {
     enable = true;

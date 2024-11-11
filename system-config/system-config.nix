@@ -37,6 +37,7 @@
       busybox # nslookup and more
       gnome-screenshot
       xclip # manage x clipboard from command line
+      wmctrl # used to set urgency on windows that send a notification
       ];
 
   # Enable Flakes:
