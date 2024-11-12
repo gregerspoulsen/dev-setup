@@ -19,6 +19,8 @@
   services.geoclue2.enable = true;
   services.localtimed.enable = true;
 
+  # Enable avahi to support mdns lookup:
+  services.avahi.enable = true;
 
   # Enable twingate (requires unfree predicate)
   nixpkgs.config = {
