@@ -23,6 +23,7 @@
       google-chrome
       python3
       usbutils  
+      gnome-calculator
     ];
 
     # This needs to actually be set to your username
