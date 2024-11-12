@@ -11,7 +11,13 @@
   virtualisation.virtualbox.guest.enable = true;
 
   services.gvfs.enable = true; # Add support for MTP (Android File Transfer)
-  services.automatic-timezoned.enable = true; # Enable automatic time-zone setting
+
+  # Enable automatic time-zone update:
+  # Doesn't work right now
+  # Nov 12 08:52:59 nixos .geoclue-wrappe[1167]: Failed to open /etc/geoclue/conf.d/: Error opening directory “/etc/geoclue/conf
+  # Pending https://github.com/NixOS/nixpkgs/issues/327464 to hit unstable
+  services.geoclue2.enable = true;
+  services.localtimed.enable = true;
 
 
   # Enable twingate (requires unfree predicate)
