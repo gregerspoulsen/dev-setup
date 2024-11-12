@@ -137,6 +137,9 @@ in
         # Power Menu
         "${mod}+x" = ''exec --no-startup-id "rofi -show power-menu -modi power-menu:rofi-power-menu"'';
 
+        # Emoji Menu
+        "${mod}+z" = ''exec --no-startup-id "rofi -modi emoji -show emoji"'';
+
         # Map mod+b to workspace 10 - used for browser
         "${mod}+b" = "workspace 10";
         # Map mod+ctrl+b to open a new browser instance
