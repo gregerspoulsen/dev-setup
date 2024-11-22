@@ -18,6 +18,7 @@
       mhutchie.git-graph
       bbenoist.nix
       github.copilot
+      github.copilot-chat
       tamasfe.even-better-toml
   ];
 };
