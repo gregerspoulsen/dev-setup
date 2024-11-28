@@ -60,7 +60,7 @@ Vagrant.configure("2") do |config|
 
   # Setup System:
   config.vm.provision "shell",
-    path: "apply.sh"
+    path: "bootstrap.sh"
   config.vm.provision :reload
 
 
