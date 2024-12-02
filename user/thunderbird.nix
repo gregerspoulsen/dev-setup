@@ -18,6 +18,10 @@
         host = "outlook.office365.com";
         port = 993;
       };
+      smtp = {
+        host = "smtp.office365.com";
+        port = 587;
+      };
      thunderbird = {
         enable = true;
         profiles = [ "gp" ];
