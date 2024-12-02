@@ -7,8 +7,10 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    nix-snapd.url = "github:nix-community/nix-snapd";
+    nix-snapd.inputs.nixpkgs.follows = "nixpkgs";
   };
-  outputs = inputs@{ self, nixpkgs, home-manager, ... }: {
+  outputs = inputs@{ self, nixpkgs, home-manager, nix-snapd, ... }: {
     # NOTE: 'nixos' is the default hostname set by the installer
     nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
       # NOTE: Change this to aarch64-linux if you are on ARM
@@ -16,6 +18,8 @@
       modules = [ 
         home-manager.nixosModules.home-manager
           { home-manager.users.gp = (import ../../user/home.nix);}
+        nix-snapd.nixosModules.default
+        { services.snap.enable = true; }
         ./configuration.nix
         ../../system-config/system-config.nix
         #./i3.nix
