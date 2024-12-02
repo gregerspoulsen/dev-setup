@@ -25,6 +25,12 @@
   networking.useDHCP = lib.mkDefault true;
   # networking.interfaces.enp0s3.useDHCP = lib.mkDefault true;
 
+  # Give vagrant internal NAT network a low priority (high metric) to prefer bridged adapter
+  networking.dhcpcd.extraConfig = "
+      interface enp0s3
+      metric 9000
+      ";
+
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   virtualisation.virtualbox.guest.enable = true;
 }
