@@ -29,13 +29,17 @@
     };
   services.twingate.enable = true;
 
+  # Enable libvirt to manage virtual machines
+  virtualisation.libvirtd.enable = true;
+  programs.virt-manager.enable = true;
+
   users.users = {
     # FIXME: Replace with your username
     gp = {
       initialPassword = "test";
       isNormalUser = true;
       shell = pkgs.zsh;
-      extraGroups = [ "wheel" "docker" "vagrant"]; # Apparently wheel give sudo :D
+      extraGroups = [ "wheel" "docker" "vagrant" "libvirtd" "kvm"]; # Apparently wheel give sudo :D
     };
   };
 
