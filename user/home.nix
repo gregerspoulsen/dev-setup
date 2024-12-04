@@ -24,6 +24,7 @@
       python3
       usbutils  
       gnome-calculator
+      anydesk
     ];
 
     # This needs to actually be set to your username
