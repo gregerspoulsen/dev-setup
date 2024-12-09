@@ -14,6 +14,10 @@
                 trigger = ";gc";
                 replace = "git clone git@github.com:luftkode/$|$.git";
             }
+            {
+                trigger = ";cdd";
+                replace = "cd ~/dev/";
+            }
         ];
         
     };
